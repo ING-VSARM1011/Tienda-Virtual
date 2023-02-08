@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block styles %}{% endblock %}
+
+{% block titulo %}Inicio de Sesión{% endblock %}
+
+{% block main %}
+    <body class="form">
+    <div class="form-container outer">
+        <div class="form-form">
+            <div class="form-form-wrap form-form-wrap-login">
+                <div class="form-container">
+                    <div class="form-content">
+                        <h1 class="">Inicio de Sesión</h1>
+                        <p class="">Ingresa con tu usuario para continuar</p>
+                        {% if error %}
+                            <div class="text-danger">
+                                {{ error }}
+                            </div>
+                        {% endif %}
+                        <form action="{% url 'administracion:iniciar-sesion' %}" id="iniciar-sesion-form" method="post"
+                              class="needs-validation text-left" novalidate>
+                            {% csrf_token %}
+                            <div class="form">
+                                <div id="username-field" class="field-wrapper input">
+                                    <label for="username">Usuario</label>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                         stroke-linejoin="round" class="feather feather-user">
+                                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                        <circle cx="12" cy="7" r="4"></circle>
+                                    </svg>
+                                    <input id="username" name="user" type="text" class="form-control"
+                                           placeholder="Ingresar usuario" required>
+                                    <div class="invalid-feedback">
+                                        Por favor, ingrese su usuario.
+                                    </div>
+                                </div>
+
+                                <div id="password-field" class="field-wrapper input mb-2">
+                                    <div class="d-flex justify-content-between">
+                                        <label for="password">Contrase&ntilde;a</label>
+                                    </div>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                         stroke-linejoin="round" class="feather feather-lock">
+                                        <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                                        <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                                    </svg>
+                                    <input id="password" name="password" type="password" class="form-control"
+                                           placeholder="Ingresar contrase&ntilde;a" required>
+                                    <div class="invalid-feedback">
+                                        Por favor, ingrese su contrase&ntilde;a.
+                                    </div>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                         stroke-linejoin="round" id="toggle-password" class="feather feather-eye">
+                                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                                        <circle cx="12" cy="12" r="3"></circle>
+                                    </svg>
+                                </div>
+                                <div class="d-sm-flex justify-content-between">
+                                    <div class="field-wrapper">
+                                        <button type="submit" class="btn btn-primary" value="">Iniciar Sesión</button>
+                                    </div>
+                                </div>
+                                <p class="signup-link">¿No esta registrado? <a
+                                        href="{% url 'administracion:registrarse' %}">Registrarse</a></p>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </body>
+{% endblock %}
+{% block scripts %}
+    <script src="../static/js/iniciar-sesion.js"></script>
+{% endblock %}

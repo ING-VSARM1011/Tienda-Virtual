@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block styles %}{% endblock %}
+
+{% block titulo %}Registrarse{% endblock %}
+
+{% block main %}
+    <input id="estadoMensaje" value="{{ estado_mensaje }}" hidden>
+    <body class="form">
+    <div class="form-container outer">
+        <div class="form-form">
+            <div class="form-form-wrap">
+                <div class="form-container">
+                    <div class="form-content">
+                        <h1 class="">Registrarse</h1>
+                        <p class="signup-link register">¿Ya tienes una cuenta? <a
+                                href="{% url 'administracion:iniciar-sesion' %}">Inicio de Sesión</a></p>
+                        <form action="{% url 'administracion:registrarse' %}" id="registrarse-form" method="post"
+                              class="needs-validation" novalidate>
+                            {% csrf_token %}
+                            <div class="form-row">
+                                <div id="divNombres" class="text-left form-group col-md-6">
+                                    <label for="inputNombres">Nombres</label>
+                                    <input type="text" class="form-control form-control-sm" maxlength="50" name="nombres"
+                                           id="nombres"
+                                           value="{{ nombres }}" placeholder="Ingrese sus nombres" required>
+                                    <div class="invalid-feedback">
+                                        Por favor, ingrese sus nombres.
+                                    </div>
+                                </div>
+                                <div id="divApellidos" class="text-left form-group col-md-6">
+                                    <label for="inputApellidos">Apellidos</label>
+                                    <input type="text" class="form-control form-control-sm" maxlength="50" name="apellidos"
+                                           id="apellidos" value="{{ apellidos }}"
+                                           placeholder="Ingrese sus apellidos" required>
+                                    <div class="invalid-feedback">
+                                        Por favor, ingrese sus apellidos.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="text-left form-group col-md-12">
+                                    <label for="inputCorreo">Correo Electrónico</label>
+                                    <input type="email" class="form-control form-control-sm" maxlength="254" name="correo"
+                                           id="correo"
+                                           value="{{ correo }}"
+                                           pattern="^[a-zA-Z0-9.!#$%&’+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)$"
+                                           placeholder="Ingrese el correo electrónico" required>
+                                    <div class="invalid-feedback">
+                                        Por favor, ingrese un correo valido.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="text-left form-group col-md-6">
+                                    <label for="inputUsuario">Usuario</label>
+                                    <input type="text" class="form-control form-control-sm" maxlength="150" name="usuario"
+                                           id="usuario"
+                                           value="{{ usuario }}" placeholder="Ingrese un usuario" required/>
+                                    <div class="invalid-feedback">
+                                        Por favor, ingrese un usuario.
+                                    </div>
+                                </div>
+                                <div class="text-left form-group col-md-6">
+                                    <label for="inputPassword">Contrase&ntilde;a</label>
+                                    <input type="password" class="form-control form-control-sm" name="password" id="password"
+                                           value="{{ password }}" placeholder="Contrase&ntilde;a" required/>
+                                    <div class="invalid-feedback">
+                                        Por favor, ingrese una contraseña.
+                                    </div>
+                                </div>
+                            </div>
+                            <br/>
+                            <div class="d-sm-flex justify-content-between">
+                                <div class="field-wrapper">
+                                    <button type="submit" class="btn btn-primary" value="">Registrar</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </body>
+{% endblock %}
+
+{% block scripts %}
+    <script src="../static/js/registrarse.js"></script>
+{% endblock %}
