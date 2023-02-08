@@ -1,0 +1,257 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block main %}
+    <!-- BEGIN LOADER -->
+    <div id="load_screen">
+        <div class="loader">
+            <div class="loader-content">
+                <div class="spinner-grow align-self-center"></div>
+            </div>
+        </div>
+        </div>
+    </div>
+    <!--  END LOADER -->
+
+    <!--  BEGIN NAVBAR  -->
+    <div class="header-container fixed-top">
+        <header class="header navbar navbar-expand-sm">
+            <ul class="navbar-item theme-brand flex-row  text-center">
+                {% block usuario %}{% endblock %}
+            </ul>
+            <ul class="navbar-item flex-row ml-md-auto">
+                <li class="nav-item dropdown language-dropdown">
+                    <a href="javascript:void(0);" class="nav-link dropdown-toggle" id="language-dropdown"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <img src="{% static 'assets/img/ca.png' %}" class="flag-width" alt="flag">
+                    </a>
+                    <div class="dropdown-menu position-absolute" aria-labelledby="language-dropdown">
+                        <a class="dropdown-item d-flex" href="javascript:void(0);"><img src="{% static 'assets/img/de.png' %}"
+                                                                                        class="flag-width" alt="flag">
+                            <span class="align-self-center">&nbsp;German</span></a>
+                        <a class="dropdown-item d-flex" href="javascript:void(0);"><img src="{% static 'assets/img/jp.png' %}"
+                                                                                        class="flag-width" alt="flag">
+                            <span class="align-self-center">&nbsp;Japanese</span></a>
+                        <a class="dropdown-item d-flex" href="javascript:void(0);"><img src="{% static 'assets/img/fr.png' %}"
+                                                                                        class="flag-width" alt="flag">
+                            <span class="align-self-center">&nbsp;French</span></a>
+                        <a class="dropdown-item d-flex" href="javascript:void(0);"><img src="{% static 'assets/img/ca.png' %}"
+                                                                                        class="flag-width" alt="flag">
+                            <span class="align-self-center">&nbsp;English</span></a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown message-dropdown">
+                    <a href="javascript:void(0);" class="nav-link dropdown-toggle" id="messageDropdown"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                             class="feather feather-mail">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                            <polyline points="22,6 12,13 2,6"></polyline>
+                        </svg>
+                    </a>
+                    <div class="dropdown-menu position-absolute" aria-labelledby="messageDropdown">
+                        <div class="">
+                            <a class="dropdown-item">
+                                <div class="">
+
+                                    <div class="media">
+                                        <div class="user-img">
+                                            <div class="avatar avatar-xl">
+                                                <span class="avatar-title rounded-circle">KY</span>
+                                            </div>
+                                        </div>
+                                        <div class="media-body">
+                                            <div class="">
+                                                <h5 class="usr-name">Kara Young</h5>
+                                                <p class="msg-title">ACCOUNT UPDATE</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </a>
+                            <a class="dropdown-item">
+                                <div class="">
+                                    <div class="media">
+                                        <div class="user-img">
+                                            <img src="{% static 'assets/img/90x90.jpg' %}" class="img-fluid mr-2" alt="avatar">
+                                        </div>
+                                        <div class="media-body">
+                                            <div class="">
+                                                <h5 class="usr-name">Daisy Anderson</h5>
+                                                <p class="msg-title">ACCOUNT UPDATE</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                            <a class="dropdown-item">
+                                <div class="">
+
+                                    <div class="media">
+                                        <div class="user-img">
+                                            <div class="avatar avatar-xl">
+                                                <span class="avatar-title rounded-circle">OG</span>
+                                            </div>
+                                        </div>
+                                        <div class="media-body">
+                                            <div class="">
+                                                <h5 class="usr-name">Oscar Garner</h5>
+                                                <p class="msg-title">ACCOUNT UPDATE</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </li>
+                <li class="nav-item dropdown notification-dropdown">
+                    <a href="javascript:void(0);" class="nav-link dropdown-toggle" id="notificationDropdown"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                             class="feather feather-bell">
+                            <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+                            <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+                        </svg>
+                        <span class="badge badge-success"></span>
+                    </a>
+                    <div class="dropdown-menu position-absolute" aria-labelledby="notificationDropdown">
+                        <div class="notification-scroll">
+                            {% block notificaciones %}{% endblock %}
+                        </div>
+                    </div>
+                </li>
+
+                <li class="nav-item dropdown user-profile-dropdown">
+                    {% block imagen_usuario %}{% endblock %}
+                    <div class="dropdown-menu position-absolute" aria-labelledby="userProfileDropdown">
+                        <div class="">
+                            {% block opciones_sesion %}{% endblock %}
+                        </div>
+                    </div>
+                </li>
+
+            </ul>
+        </header>
+    </div>
+    <!--  END NAVBAR  -->
+
+    <!--  BEGIN NAVBAR  -->
+    <div class="sub-header-container">
+        <header class="header navbar navbar-expand-sm">
+            <a href="javascript:void(0);" class="sidebarCollapse" data-placement="bottom">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                     class="feather feather-menu">
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                </svg>
+            </a>
+            <ul class="navbar-nav flex-row">
+                <li class="nav-item theme-text">
+                    <a href="{% url 'administracion:panel-inicio' %}" class="nav-link"> VPTechnology </a>
+                </li>
+            </ul>
+        </header>
+    </div>
+    <!--  END NAVBAR  -->
+
+    <!--  BEGIN MAIN CONTAINER  -->
+    <div class="main-container" id="container">
+
+        <div class="overlay"></div>
+        <div class="search-overlay"></div>
+
+        <!--  BEGIN SIDEBAR  -->
+        <div class="sidebar-wrapper sidebar-theme">
+            <nav id="sidebar">
+                <div class="shadow-bottom"></div>
+                <ul class="list-unstyled menu-categories" id="accordionExample">
+                    <li class="menu">
+                        <a href="#opciones-administracion" data-toggle="collapse" aria-expanded="false"
+                           class="dropdown-toggle">
+                            <div class="" id="administracion">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                     fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                     stroke-linejoin="round" class="feather feather-folder-plus">
+                                    <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>
+                                    <line x1="12" y1="11" x2="12" y2="17"></line>
+                                    <line x1="9" y1="14" x2="15" y2="14"></line>
+                                </svg>
+                                <span>Administración</span>
+                            </div>
+                            <div>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                     fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                     stroke-linejoin="round" class="feather feather-chevron-right">
+                                    <polyline points="9 18 15 12 9 6"></polyline>
+                                </svg>
+                            </div>
+                        </a>
+                        <ul class="collapse submenu list-unstyled" id="opciones-administracion" data-parent="#accordionExample">
+                            <li id="opcion-usuarios">
+                                <a href="{% url 'administracion:usuarios-index' %}"> Usuarios </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="menu">
+                        <a href="#opciones-pqrs" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                            <div class="" id="gestion-pqrs">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                     fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                     stroke-linejoin="round" class="feather feather-message-square">
+                                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                                </svg>
+                                <span>Gestión PQRS</span>
+                            </div>
+                            <div>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                     fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                     stroke-linejoin="round" class="feather feather-chevron-right">
+                                    <polyline points="9 18 15 12 9 6"></polyline>
+                                </svg>
+                            </div>
+                        </a>
+                        <ul class="collapse submenu list-unstyled" id="opciones-pqrs" data-parent="#accordionExample">
+                            <li id="opcion-gestionar">
+                                <a href="{% url 'gestion-pqrs:pqrs-index' %}"> Gestionar </a>
+                            </li>
+                            <li id="opcion-registrar">
+                                <a href="{% url 'gestion-pqrs:registrar-pqrs' %}"> Registrar </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <!--  END SIDEBAR  -->
+
+        <!--  BEGIN CONTENT AREA  -->
+        <div id="content" class="main-content">
+            {% block window %}{% endblock %}
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                <div class="footer-section text-center f-section-1">
+                    <p>
+                        {{ fecha }}
+                        <br><br>
+                        © 2022 VPS Technology. Todos los derechos reservados.
+                        <br><br>
+                        Cúcuta, Norte de Santander
+                    </p>
+                </div>
+            </div>
+        </div>
+        <!--  END CONTENT AREA  -->
+
+    </div>
+    <!-- END MAIN CONTAINER -->
+{% endblock %}
+
+{% block scripts %}
+    <script src="../static/js/control-menu.js"></script>
+{% endblock %}
