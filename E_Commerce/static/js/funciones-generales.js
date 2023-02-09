@@ -131,6 +131,44 @@ function eliminarElemento(pathModulo, nombre, campo, referencia, idElemento) {
 }
 
 /**
+* Se elimina el usuario referenciado, mostrando mensaje exitoso y redirigiendo al inicio de sesión de la plataforma.
+ * @param pathModulo ruta que hace refencia al módulo de donde se esta eliminando el elemento.
+ * @param idElemento id del elemento que se desea eliminar.
+ * @param nombre nombre del elemento que se desea eliminar.
+ * @param campo campo de referencia del elemento que se desea eliminar.
+ * @param referencia código o valor de referencia del elemento que se desea eliminar.
+*/
+function eliminarUsuario(pathModulo, nombre, campo, referencia, idElemento) {
+    swal({
+        title: `¿Desea Eliminar ${nombre}?`,
+        text: `Por favor, confirme la eliminación del ${nombre} con ${campo}: ${referencia}`,
+        imageUrl: '../../static/assets/img/icono-eliminar.png',
+        showCancelButton: true,
+        confirmButtonText: "Confirmar",
+        cancelButtonText: "Cancelar",
+        padding: '2em',
+    }).then(resultado => {
+        if (resultado.value) {
+            let origin = $(location).attr('origin');
+            getAjax(`${origin}${pathModulo}${idElemento}/eliminar`).then((json) => {
+                if (json) {
+                    showMessage(json.titulo, json.mensaje, json.icono);
+                    $(".swal2-confirm").on("click", function () {
+                        let origin = $(location).attr('origin');
+                        console.log(json.ruta);
+                        if (json.ruta === '') {
+                            window.location.href = `${origin}`;
+                        } else {
+                            window.location.href = `${origin}${json.ruta}`;
+                        }
+                    });
+                }
+            });
+        }
+    });
+}
+
+/**
 * Muestra los elementos pasados en el arreglo.
 * @param idsElementos arreglo con los elementos que se desean mostrar.
 */
@@ -289,8 +327,9 @@ function restablecerSelects(selects) {
     });
 }
 
-function abrirModal(url) {
-    $("#editar-info-basica").load(url, function () {
+function abrirModal(url, idModal, idForm) {
+    $(`#${idModal}`).load(url, function () {
        $(this).modal("show");
+       validarFormularioEnvio($(`#${idForm}`));
     });
 }

@@ -9,7 +9,7 @@ from Administracion.general.funciones_validadoras import validar_correo
 class IniciarSesionView(View):
     def get(self, request):
         logout(request)
-        return render(request, 'iniciar_sesion.html')
+        return render(request, 'administracion/iniciar_sesion.html')
 
     def post(self, request):
         if not request.user.is_authenticated:
@@ -20,14 +20,14 @@ class IniciarSesionView(View):
                 login(request, user)
                 return redirect('administracion:panel-inicio')
             else:
-                return render(request, 'iniciar_sesion.html', {'error': 'El usuario y/o la contraseña no son validos.'})
+                return render(request, 'administracion/iniciar_sesion.html', {'error': 'El usuario y/o la contraseña no son validos.'})
         else:
-            return render(request, 'panel_inicio.html')
+            return render(request, 'administracion/panel_inicio.html')
 
 
 class RegistrarseView(View):
     def get(self, request):
-        return render(request, 'registrarse.html')
+        return render(request, 'administracion/registrarse.html')
 
     def post(self, request):
         datos = request.POST
@@ -40,7 +40,7 @@ class RegistrarseView(View):
         if not validar_correo(correo):
             data.update({'usuario': username, 'password': password, 'correo': correo})
             data.update({'estado_mensaje': 'fallido'})
-            return render(request, 'registrarse.html', data)
+            return render(request, 'administracion/registrarse.html', data)
         else:
             user = User.objects.create_user(username, correo, password)
             user.is_active = True
@@ -48,7 +48,21 @@ class RegistrarseView(View):
             user.last_name = apellidos
             user.save()
             data.update({'estado_mensaje': 'exitoso'})
-            return render(request, 'registrarse.html', data)
+            return render(request, 'administracion/registrarse.html', data)
+
+
+class CerrarSesionView(View):
+    def get(self, request):
+        logout(request)
+        return redirect('administracion:iniciar-sesion')
+
+
+class PanelInicioView(View):
+    def get(self, request):
+        if request.user.is_authenticated:
+            return render(request, 'administracion/panel_inicio.html', {'usuario': User.objects.get(id=request.user.id)})
+        else:
+            return redirect('administracion:iniciar-sesion')
 
 
 

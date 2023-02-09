@@ -1,0 +1,76 @@
+<div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title row ml-1" id="exampleModalLabel">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                     class="feather feather-edit">
+                    <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                    <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                </svg>
+                <div id="titulo-modal-usuario" class="ml-1">Usuario: {{ usuario.username }}</div>
+            </h5>
+        </div>
+        <div class="modal-body">
+            <form action="{% url 'administracion:editar-usuario' usuario.id %}" id="form-editar-usuario" method="post"
+                  class="needs-validation" novalidate>
+                {% csrf_token %}
+                <div class="form-row">
+                    <div id="divNombres" class="text-left form-group col-md-6">
+                        <label for="inputNombres">Nombres</label>
+                        <input type="text" class="form-control form-control-sm" maxlength="50" name="nombres"
+                               id="nombres"
+                               value="{{ usuario.first_name }}" placeholder="Ingrese sus nombres" required>
+                        <div class="invalid-feedback">
+                            Por favor, ingrese sus nombres.
+                        </div>
+                    </div>
+                    <div id="divApellidos" class="text-left form-group col-md-6">
+                        <label for="inputApellidos">Apellidos</label>
+                        <input type="text" class="form-control form-control-sm" maxlength="50" name="apellidos"
+                               id="apellidos" value="{{ usuario.last_name }}"
+                               placeholder="Ingrese sus apellidos" required>
+                        <div class="invalid-feedback">
+                            Por favor, ingrese sus apellidos.
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-12">
+                        <label for="inputCorreo">Correo Electrónico</label>
+                        <input type="email" class="form-control form-control-sm" maxlength="254"
+                               name="correo" id="correo" value="{{ usuario.email }}"
+                               pattern="^[a-zA-Z0-9.!#$%&’+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)$"
+                               placeholder="Ingrese el correo electrónico" required>
+                        <div class="invalid-feedback">
+                            Por favor, ingrese un correo electrónico valido.
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="text-left form-group col-md-6">
+                        <label for="inputUsuario">Usuario</label>
+                        <input type="text" class="form-control form-control-sm" maxlength="150" name="usuario"
+                               id="usuario"
+                               value="{{ usuario.username }}" placeholder="Ingrese un usuario" required/>
+                        <div class="invalid-feedback">
+                            Por favor, ingrese un usuario.
+                        </div>
+                    </div>
+                    <div class="text-left form-group col-md-6">
+                        <label for="inputPassword">Contrase&ntilde;a</label>
+                        <input type="password" class="form-control form-control-sm" name="password" id="password"
+                               value="{{ usuario.password }}" placeholder="Contrase&ntilde;a" required/>
+                        <div class="invalid-feedback">
+                            Por favor, ingrese una contraseña.
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" id="boton-editar-usuario" class="btn btn-primary">Editar</button>
+                    <button class="btn" data-dismiss="modal"><i class="flaticon-cancel-12"></i>Cancelar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
