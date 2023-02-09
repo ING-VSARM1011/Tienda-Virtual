@@ -5,6 +5,8 @@ class GeneralView(View):
     def get(self, request, id_elemento=None):
         if request.path_info.endswith("index"):
             return self.index(request)
+        elif request.path_info.endswith("registro"):
+            return self.registro(request)
         elif request.path_info.endswith("ver"):
             return self.ver(request, id_elemento)
         elif request.path_info.endswith("eliminar") and id_elemento:
