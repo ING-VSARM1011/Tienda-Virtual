@@ -1,0 +1,124 @@
+{% extends 'administracion/panel_inicio.html' %}
+{% load static %}
+
+{% block titulo %}Categorías{% endblock %}
+
+{% block styles %}
+
+{% endblock %}
+
+{% block window %}
+    <div class="layout-px-spacing">
+        <div class="row layout-top-spacing">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                <div class="white_shd full margin_bottom_30">
+                    <div class="full graph_head mb-2">
+                        <div class="heading1 margin_0">
+                            <div class="row ml-1">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="56" height="56" viewBox="0 0 24 24"
+                                     fill="none" stroke="#4361ee" stroke-width="1" stroke-linecap="round"
+                                     stroke-linejoin="round" class="feather feather-shopping-bag">
+                                    <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                                    <path d="M16 10a4 4 0 0 1-8 0"></path>
+                                </svg>
+                                <div class="form-group ml-2">
+                                    <h5><strong>Categorías</strong></h5>
+                                    <small><strong>Se visualizan las categorías disponibles en la tienda virtual</strong></small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <a href="Javascript:abrirModal('{% url 'administracion:registro-categoria' %}',
+                                                        'registrar-editar-categoria', 'form-registrar-editar-categoria')"
+                       id="registro_categoria" data-toggle="tooltip"
+                       data-placement="top" title="">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="25"
+                             height="25" viewBox="0 0 24 24" fill="none"
+                             stroke="#4361ee" stroke-width="2"
+                             stroke-linecap="round" stroke-linejoin="round"
+                             class="feather feather-plus-circle">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <line x1="12" y1="8" x2="12" y2="16"></line>
+                            <line x1="8" y1="12" x2="16" y2="12"></line>
+                        </svg>
+                        Registrar
+                    </a>
+                    <br><br>
+                    <div id="contenedor-tabla-categorias" class="panel-container mb-4">
+                        <div class="panel-content">
+                            <div class="panel-group">
+                                <div class="panel-body">
+                                    <div id="panel-tabla">
+                                        <div class="card">
+                                            <div class="card-header" id="cabecera-panel-resultados">
+                                                <section class="mb-0 mt-0">
+                                                    <div id="cabecera-resultado-busqueda" role="menu" class=""
+                                                         data-toggle="collapse"
+                                                         data-target="#panel-resultados" aria-expanded="true"
+                                                         aria-controls="panel-resultados">
+                                                        Resultados para Categorías
+                                                        <div class="icons">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                                                 height="24" viewBox="0 0 24 24" fill="none"
+                                                                 stroke="currentColor" stroke-width="2"
+                                                                 stroke-linecap="round" stroke-linejoin="round"
+                                                                 id="iconoAcordionAbajoPanelResultados"
+                                                                 class="feather feather-chevron-down" hidden>
+                                                                <polyline points="6 9 12 15 18 9"></polyline>
+                                                            </svg>
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                                                 height="24" viewBox="0 0 24 24" fill="none"
+                                                                 stroke="currentColor" stroke-width="2"
+                                                                 stroke-linecap="round" stroke-linejoin="round"
+                                                                 id="iconoAcordionArribaPanelResultados"
+                                                                 class="feather feather-chevron-up">
+                                                                <polyline points="18 15 12 9 6 15"></polyline>
+                                                            </svg>
+                                                        </div>
+                                                    </div>
+                                                </section>
+                                            </div>
+                                            <div id="panel-resultados" class="collapse show"
+                                                 aria-labelledby="cabecera-panel-resultados"
+                                                 data-parent="#panel-tabla">
+                                                <div class="card-body">
+                                                    <div class="padding_infor_info">
+                                                        <div class="table-responsive">
+                                                            <table class="table table-hover table-bordered w-100 table-striped table-sm"
+                                                                   id="tablaCategorias" style="width: 100% !important;">
+
+                                                                <thead>
+                                                                <tr>
+                                                                    <th data-priority="1" class="text-center all"></th>
+                                                                    <th class="text-center">Nombre</th>
+                                                                    <th class="text-center">Descripción</th>
+                                                                    <th class="text-center">Productos</th>
+                                                                    <th data-priority="3" class="text-center all">Acción</th>
+                                                                    <th id="nombres" class="text-left none">Imagen</th>
+                                                                    <th class="text-left none">Creación</th>
+                                                                </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="registrar-editar-categoria" role="dialog"></div>
+{% endblock %}
+
+{% block scripts %}
+        <script src="{% static  'js/categorias/categorias.js' %}"></script>
+{% endblock %}

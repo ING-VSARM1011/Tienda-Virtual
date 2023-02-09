@@ -91,14 +91,12 @@ function showMessage(titulo, mensaje, icono) {
  * @param pathModulo ruta que hace refencia al módulo de donde se esta eliminando el elemento.
  * @param idElemento id del elemento que se desea eliminar.
  * @param nombre nombre del elemento que se desea eliminar.
- * @param campo campo de referencia del elemento que se desea eliminar.
- * @param referencia código o valor de referencia del elemento que se desea eliminar.
 */
-function eliminarElemento(pathModulo, nombre, campo, referencia, idElemento) {
+function eliminarElemento(pathModulo, nombre, idElemento) {
     swal({
         title: `¿Desea Eliminar ${nombre}?`,
-        text: `Por favor, escriba un motivo y confirme la eliminación del ${nombre} con ${campo}: ${referencia}`,
-        imageUrl: '../static/assets/img/icono-eliminar.png',
+        text: `Por favor, escriba un motivo y confirme la eliminación`,
+        imageUrl: '../../static/assets/img/icono-eliminar.png',
         input: "text",
         showCancelButton: true,
         confirmButtonText: "Confirmar",
@@ -121,8 +119,7 @@ function eliminarElemento(pathModulo, nombre, campo, referencia, idElemento) {
                 if (json) {
                     showMessage(json.titulo, json.mensaje, json.icono);
                     $(".swal2-confirm").on("click", function () {
-                        $("#buscar-pqrs").trigger('click');
-                        //window.location.reload();
+                        window.location.href = `${origin}${json.ruta}`;
                     });
                 }
             });
