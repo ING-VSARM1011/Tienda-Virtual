@@ -47,12 +47,13 @@ class Producto(ModeloBase):
     nombre = models.TextField(max_length=500, verbose_name='Nombre', null=False, blank=False)
     descripcion = models.TextField(max_length=1000, verbose_name='Descripción', null=False, blank=False)
     marca = models.CharField(max_length=50, verbose_name='Marca', null=False, blank=False)
-    precio = models.DecimalField(default=0, verbose_name='Precio', max_digits=8, decimal_places=2, null=False,
+    precio = models.DecimalField(default=0, verbose_name='Precio', max_digits=9, decimal_places=2, null=False,
                                  blank=False)
     cantidad_disponible = models.PositiveIntegerField(default=0, validators=[MinValueValidator(0),
                                                                              MaxValueValidator(100)],
                                                       verbose_name='Cantidad Disponible', null=False,
                                                       blank=False)
+    imagen = models.CharField(max_length=60, verbose_name='Imagen', null=False, blank=False)
     estado = models.BooleanField(default=True, verbose_name='Estado', null=False, blank=False)
     motivo = models.TextField(max_length=1000, verbose_name='Descripción', null=False, blank=False)
 
@@ -61,6 +62,21 @@ class Producto(ModeloBase):
 
     class Meta:
         verbose_name = 'Producto'
+
+    @staticmethod
+    def from_instance(data: dict, id_user) -> 'Producto':
+        producto = Producto()
+        producto.codigo = data.get('codigo', '')
+        producto.nombre = data.get('nombre', '')
+        producto.descripcion = data.get('descripcion', '')
+        producto.marca = data.get('marca', '')
+        producto.precio = data.get('precio', '')
+        producto.cantidad_disponible = data.get('cantidad', '')
+        producto.motivo = data.get('motivo', '')
+        producto.imagen = data.get('imagen', 'categoria-ropa-mujer.jpg')
+        producto.usuario_crea = producto.usuario_modifica = id_user
+
+        return producto
 
 
 class ProductoCategoria(models.Model):

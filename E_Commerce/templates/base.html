@@ -52,6 +52,9 @@
         <link href="{% static  'plugins/sweetalerts/sweetalert.css' %}" rel="stylesheet" type="text/css" />
         <link href="{% static  'assets/css/components/custom-sweetalert.css' %}" rel="stylesheet" type="text/css" />
         <!-- End sweetalert -->
+        <!-- Select Multiple -->
+        <link rel="stylesheet" type="text/css" href="{% static  'plugins/tomSelect/tom-select.default.min.css' %}">
+        <!-- END Select Multiple -->
         {% block styles %}{% endblock %}
     </head>
     <body>
@@ -114,6 +117,14 @@
         <script src="{% static  'plugins/sweetalerts/custom-sweetalert.js' %}"></script>
         <script src="{% static  'plugins/sweetalerts/promise-polyfill.js' %}"></script>
         <!-- End sweetalert -->
+        <!-- Currency -->
+        <script src="{% static  'plugins/input-mask/jquery.inputmask.bundle.min.js' %}"></script>
+        <script src="{% static  'plugins/input-mask/input-mask.js' %}"></script>
+        <!-- End Currency -->
+        <!-- Select Multiple -->
+        <script src="{% static  'plugins/tomSelect/tom-select.base.js' %}"></script>
+        <script src="{% static  'plugins/tomSelect/custom-tom-select.js' %}"></script>
+        <!-- END Select Multiple -->
         <script src="{% static  'js/funciones-generales.js' %}"></script>
         {% block scripts %}{% endblock %}
     </body>

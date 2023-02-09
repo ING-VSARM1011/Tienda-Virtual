@@ -25,8 +25,8 @@
                 {% csrf_token %}
                 <div class="form-row">
                     <div id="divNombreCategoria" class="text-left form-group col-md-12">
-                        <label for="inputNombres">Nombres</label>
-                        <input type="text" class="form-control form-control-sm" maxlength="50" name="nombre"
+                        <label for="inputNombres">Nombre</label>
+                        <input type="text" class="form-control form-control-sm" maxlength="100" name="nombre"
                                id="nombre"
                                value="{{ categoria.nombre }}" placeholder="Ingrese un nombre" required>
                         <div class="invalid-feedback">
@@ -41,7 +41,7 @@
                         <textarea class="form-control form-control-sm"
                                   maxlength="1000" name="descripcion"
                                   id="descripcion" rows="3"
-                                  placeholder="Ingrese el motivo"
+                                  placeholder="Ingrese la descripción"
                                   required>{{ categoria.descripcion }}</textarea>
                         <div class="invalid-feedback">
                             Por favor, ingrese una descripción.

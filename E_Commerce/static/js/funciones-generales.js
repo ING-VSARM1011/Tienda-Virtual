@@ -328,5 +328,8 @@ function abrirModal(url, idModal, idForm) {
     $(`#${idModal}`).load(url, function () {
        $(this).modal("show");
        validarFormularioEnvio($(`#${idForm}`));
+       new TomSelect("#select-state",{
+            maxItems: 10
+        });
     });
 }
