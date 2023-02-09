@@ -22,7 +22,7 @@ class Categoria(ModeloBase):
     descripcion = models.TextField(max_length=1000, verbose_name='Descripción', null=False, blank=False)
     imagen = models.CharField(max_length=60, verbose_name='Imagen', null=False, blank=False)
     estado = models.BooleanField(default=True, verbose_name='Estado', null=False, blank=False)
-    motivo = models.TextField(max_length=1000, verbose_name='Descripción', null=False, blank=False)
+    motivo = models.TextField(max_length=1000, verbose_name='Motivo', null=False, blank=False)
 
     def __str__(self):
         return self.nombre
@@ -55,7 +55,7 @@ class Producto(ModeloBase):
                                                       blank=False)
     imagen = models.CharField(max_length=60, verbose_name='Imagen', null=False, blank=False)
     estado = models.BooleanField(default=True, verbose_name='Estado', null=False, blank=False)
-    motivo = models.TextField(max_length=1000, verbose_name='Descripción', null=False, blank=False)
+    motivo = models.TextField(max_length=1000, verbose_name='Motivo', null=False, blank=False)
 
     def __str__(self):
         return self.nombre

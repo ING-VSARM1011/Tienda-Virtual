@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'Administracion.apps.AdministracionConfig',
+    'OrdenesCompra.apps.OrdenescompraConfig',
 ]
 
 MIDDLEWARE = [
@@ -129,6 +130,7 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'E_Commerce/static/'),
     os.path.join(BASE_DIR, 'Administracion', 'static'),
+    os.path.join(BASE_DIR, 'OrdenesCompra', 'static'),
 )
 
 # Media

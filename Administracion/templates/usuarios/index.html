@@ -89,7 +89,11 @@
                             <div class="items">
                                 <div class="item-content">
                                     <div class="user-profile pl-0 ml-0 pr-0">
-                                        <img src="{% static 'assets/img/user-profile.jpeg' %}" alt="avatar">
+                                        {% if usuario.username == 'victor.moreno' %}
+                                            <img src="{% static 'assets/img/user-profile.jpeg' %}" alt="avatar">
+                                        {% else %}
+                                            <img src="{% static 'assets/img/user-profile-woman.jpeg' %}" alt="avatar">
+                                        {% endif %}
                                         <div class="user-meta-info">
                                             <p class="user-name"
                                                data-name="usuario_{{ usuario.id }}">{{ usuario.username }}</p>

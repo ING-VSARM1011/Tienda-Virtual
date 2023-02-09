@@ -1,7 +1,7 @@
 {% extends 'administracion/panel_inicio.html' %}
 {% load static %}
 
-{% block titulo %}Productos{% endblock %}
+{% block titulo %}Mis Ordenes{% endblock %}
 
 {% block styles %}
 
@@ -17,20 +17,22 @@
                             <div class="row ml-1">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="56" height="56" viewBox="0 0 24 24"
                                      fill="none" stroke="#4361ee" stroke-width="1" stroke-linecap="round"
-                                     stroke-linejoin="round" class="feather feather-briefcase">
-                                    <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
-                                    <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                                     stroke-linejoin="round" class="feather feather-shopping-cart">
+                                    <circle cx="9" cy="21" r="1"></circle>
+                                    <circle cx="20" cy="21" r="1"></circle>
+                                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
                                 </svg>
                                 <div class="form-group ml-2">
-                                    <h5><strong>Productos</strong></h5>
-                                    <small><strong>Se visualizan los productos existentes en la tienda virtual</strong></small>
+                                    <h5><strong>Mis Ordenes de Compra</strong></h5>
+                                    <small><strong>Se visualizan las ordenes de compra realizadas en la plataforma.</strong></small>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <hr>
-                    <a href="Javascript:abrirModal('{% url 'administracion:registro-producto' %}', 'registrar-editar-producto', 'form-registrar-editar-producto')"
-                       id="registro_producto" data-toggle="tooltip"
+                    <a href="Javascript:abrirModal('{% url 'ordenes-compra:registro-orden-compra' %}',
+                                                        'registrar-editar-orden-compra', 'form-registrar-editar-orden-compra')"
+                       id="registro_orden" data-toggle="tooltip"
                        data-placement="top" title="">
                         <svg xmlns="http://www.w3.org/2000/svg" width="25"
                              height="25" viewBox="0 0 24 24" fill="none"
@@ -44,7 +46,7 @@
                         Registrar
                     </a>
                     <br><br>
-                    <div id="contenedor-tabla-productos" class="panel-container mb-4">
+                    <div id="contenedor-tabla-ordenes" class="panel-container mb-4">
                         <div class="panel-content">
                             <div class="panel-group">
                                 <div class="panel-body">
@@ -56,7 +58,7 @@
                                                          data-toggle="collapse"
                                                          data-target="#panel-resultados" aria-expanded="true"
                                                          aria-controls="panel-resultados">
-                                                        Resultados para Productos
+                                                        Resultados para Ordenes de Compra
                                                         <div class="icons">
                                                             <svg xmlns="http://www.w3.org/2000/svg" width="24"
                                                                  height="24" viewBox="0 0 24 24" fill="none"
@@ -85,20 +87,17 @@
                                                     <div class="padding_infor_info">
                                                         <div class="table-responsive">
                                                             <table class="table table-hover table-bordered w-100 table-striped table-sm"
-                                                                   id="tablaProductos" style="width: 100% !important;">
+                                                                   id="tablaOrdenes" style="width: 100% !important;">
 
                                                                 <thead>
                                                                 <tr>
                                                                     <th data-priority="1" class="text-center all"></th>
                                                                     <th class="text-center">Código</th>
-                                                                    <th class="text-center">Nombre</th>
-                                                                    <th class="text-center">Descripción</th>
-                                                                    <th class="text-center">Precio</th>
+                                                                    <th class="text-center">Fecha de Entrega</th>
+                                                                    <th class="text-center">Observación</th>
+                                                                    <th class="text-center">Dirección</th>
                                                                     <th data-priority="3" class="text-center all">Acción</th>
-                                                                    <th id="imagen" class="text-left none">Imagen</th>
-                                                                    <th id="categorias" class="text-left none">Categorías</th>
-                                                                    <th id="marca" class="text-left none">Marca</th>
-                                                                    <th id="cantidad" class="text-left none">Cantidad</th>
+                                                                    <th id="nombres" class="text-left none">Celular</th>
                                                                     <th class="text-left none">Creación</th>
                                                                 </tr>
                                                                 </thead>
@@ -118,9 +117,9 @@
             </div>
         </div>
     </div>
-    <div class="modal fade" id="registrar-editar-producto" role="dialog"></div>
+    <div class="modal fade" id="registrar-editar-orden-compra" role="dialog"></div>
 {% endblock %}
 
 {% block scripts %}
-        <script src="{% static  'js/productos/productos.js' %}"></script>
+        <script src="{% static  'js/ordenes/ordenes.js' %}"></script>
 {% endblock %}
