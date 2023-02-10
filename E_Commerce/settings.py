@@ -21,7 +21,6 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-%u=s^ri4_7ou70wi$8na$!i#9f+m14q#6_rd-0v7(yieemwz-m'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -82,7 +81,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'E-Commerce',
         'USER': 'postgres',
-        'PASSWORD': '*********',
+        'PASSWORD': '********',
         'HOTS': '127.0.0.1',
         'PORT': '5434'
     }
